@@ -123,3 +123,40 @@ function mostraResultado() {
 }
 
 mostraPergunta();
+
+function mudarCorDeFundo(cor) {
+    caixaPrincipal.style.backgroundColor = cor;
+}
+
+function respostaSelecionada(opcaoSelecionada) {
+    const afirmacoes = opcaoSelecionada.afirmacao;
+    historiaFinal += afirmacoes + " ";
+    
+    // Mudando a cor de fundo dependendo da resposta
+    if (atual === 0) {
+        // Primeira escolha
+        if (opcaoSelecionada.texto.includes('primeira ponte')) {
+            mudarCorDeFundo("#8B5E3C"); // Cor de ponte quebrada
+        } else {
+            mudarCorDeFundo("#2D8C6A"); // Cor de floresta, escolha dos jacarés
+        }
+    } else if (atual === 1) {
+        // Segunda escolha
+        if (opcaoSelecionada.texto.includes('trilha íngreme')) {
+            mudarCorDeFundo("#A9742E"); // Cor de uma subida no sol
+        } else {
+            mudarCorDeFundo("#4D9F7F"); // Cor do vale tranquilo
+        }
+    } else if (atual === 2) {
+        // Terceira escolha
+        if (opcaoSelecionada.texto.includes('entrar na cabana')) {
+            mudarCorDeFundo("#6E4B3A"); // Tom de madeira escura
+        } else {
+            mudarCorDeFundo("#A3D9B0"); // Cor tranquila de natureza
+        }
+    }
+    
+    atual++;
+    mostraPergunta();
+}
+
